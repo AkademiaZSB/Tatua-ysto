@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ink Growth | Marketing dla Salonów Tatuażu</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #ff3636;
+            --accent: #8a2be2;
+            --light: #f5f5f5;
+            --dark: #121212;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .cta-button {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,54,54,0.3);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+        }
+        
+        .purple-highlight {
+            color: var(--accent);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .services {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            color: var(--text);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .case-studies {
+            background-color: var(--light);
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .case-image {
+            height: 200px;
+            background-color: #ddd;
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .stats {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stat-item p {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-item span {
+            font-size: 14px;
+        }
+        
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial-item {
+            padding: 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 50px;
+            font-family: serif;
+            color: var(--secondary);
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .testimonial-position {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        
+        .process {
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .pricing {
+            background-color: var(--light);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .popular {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background-color: var(--secondary);
+            color: white;
+            font-size: 14px;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--secondary);
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: var(--text);
+            font-weight: 400;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .contact {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+                margin-bottom: 30px;
+            }
+            
+            .service-card, .case-card, .pricing-card {
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* Animation for the CTA button pulse */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 54, 54, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 54, 54, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 54, 54, 0);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Floating animation for icons */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Ink<span>Growth</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">O nas</a></li>
+                    <li><a href="#services">Usługi</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#testimonials">Opinie</a></li>
+                    <li><a href="#pricing">Cennik</a></li>
+                    <li><a href="#contact" class="cta-button pulse">Skontaktuj się</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Zwiększamy liczbę klientów w <span class="highlight">salonach tatuażu</span> nawet o <span class="purple-highlight">300%</span></h1>
+            <p>Specjalizujemy się w pozyskiwaniu wysokiej jakości leadów dla salonów tatuażu. Dzięki naszym kampaniom na Facebooku i Instagramie, Twój salon będzie przyciągał idealnych klientów, którzy są gotowi wydać pieniądze na profesjonalne tatuaże.</p>
+            <a href="#contact" class="cta-button pulse">Umów bezpłatną konsultację</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dlaczego my?</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Specjaliści w marketingu salonów tatuażu</h3>
+                    <p>W przeciwieństwie do większości agencji marketingowych, które próbują obsługiwać wszystkie branże, my <strong>specjalizujemy się wyłącznie w salonach tatuażu</strong>.</p>
+                    <p>Ta specjalizacja pozwala nam doskonale rozumieć:</p>
+                    <ul>
+                        <li>Psychologię klientów szukających tatuaży</li>
+                        <li>Najskuteczniejsze formaty reklam dla branży tatuażu</li>
+                        <li>Optymalne targetowanie i parametry kampanii</li>
+                        <li>Jak przekształcić zainteresowanie w rezerwacje</li>
+                    </ul>
+                    <p>Nasze kampanie generują nie tylko kliknięcia, ale <strong>realne rezerwacje terminów</strong> od klientów, którzy są gotowi zapłacić za jakościowe tatuaże.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/400" alt="Zespół InkGrowth">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nasze usługi</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon float">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>Kampanie Facebook</h3>
+                    <p>Targetowane kampanie reklamowe, które docierają do idealnych klientów na Facebooku. Wykorzystujemy zaawansowane algorytmy do znajdowania osób, które są najbardziej skłonne zamówić tatuaż.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon float">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Marketing Instagram</h3>
+                    <p>Wykorzystujemy wizualną naturę Instagrama, aby prezentować portfolio Twojego salonu. Nasze kampanie budują społeczność zaangażowanych fanów, którzy zamieniają się w klientów.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon float">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3>Produkcja treści</h3>
+                    <p>Tworzymy wysokiej jakości treści, które podkreślają wyjątkowość Twojego salonu. Od profesjonalnych zdjęć po angażujące wideo prezentujące Twoich artystów przy pracy.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon float">
+                        <i class="fas fa-funnel-dollar"></i>
+                    </div>
+                    <h3>Lejki sprzedażowe</h3>
+                    <p>Budujemy kompletne ścieżki klienta, które prowadzą od pierwszego kontaktu do rezerwacji terminu. Nasze lejki maksymalizują konwersję i minimalizują koszt pozyskania klienta.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon float">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analityka i raporty</h3>
+                    <p>Dostarczamy przejrzyste raporty pokazujące dokładnie, jak Twój budżet reklamowy przekłada się na nowych klientów. Optymalizujemy kampanie na podstawie danych.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon float">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Obsługa rezerwacji</h3>
+                    <p>Opcjonalnie możemy obsługiwać wstępne rezerwacje, aby Twój zespół mógł skupić się na tym, co robi najlepiej - tworzeniu niesamowitych tatuaży.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nasze wyniki</h2>
+            </div>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="/api/placeholder/350/200" alt="Case Study 1">
+                    </div>
+                    <div class="case-content">
+                        <h3>Salon Black Ink, Warszawa</h3>
+                        <p>Salon z 5-letnią historią, który zmagał się z niestabilnym napływem klientów.</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <p>+217%</p>
+                                <span>Więcej klientów</span>
+                            </div>
+                            <div class="stat-item">
+                                <p>-42%</p>
+                                <span>Niższy koszt klienta</span>
+                            </div>
+                            <div class="stat-item">
+                                <p>3.6x</p>
+                                <span>Zwrot z inwestycji</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="/api/placeholder/350/200" alt="Case Study 2">
+                    </div>
+                    <div class="case-content">
+                        <h3>Ink Masters, Kraków</h3>
+                        <p>Nowy salon, który potrzebował szybko zbudować bazę klientów w konkurencyjnym mieście.</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <p>68</p>
+                                <span>Nowych klientów/mies.</span>
+                            </div>
+                            <div class="stat-item">
+                                <p>87%</p>
+                                <span>Wypełnienie terminarza</span>
+                            </div>
+                            <div class="stat-item">
+                                <p>4.2x</p>
+                                <span>Zwrot z inwestycji</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image">
+                        <img src="/api/placeholder/350/200" alt="Case Study 3">
+                    </div>
+                    <div class="case-content">
+                        <h3>Dragon Tattoo, Wrocław</h3>
+                        <p>Doświadczony salon, który chciał przyciągnąć klientów zainteresowanych większymi, droższymi projektami.</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <p>+94%</p>
+                                <span>Więcej klientów</span>
+                            </div>
+                            <div class="stat-item">
+                                <p>+156%</p>
+                                <span>Wzrost przychodów</span>
+                            </div>
+                            <div class="stat-item">
+                                <p>5.1x</p>
+                                <span>Zwrot z inwestycji</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Co mówią nasi klienci</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "Współpracujemy z InkGrowth od 8 miesięcy i jestem pod ogromnym wrażeniem wyników. Nasz kalendarz jest pełny na 3 tygodnie do przodu, a jakość klientów jest znacznie wyższa. Przychodzą już zdecydowani, z konkretną wizją i budżetem."
+                    </div>
+                    <div class="testimonial-author">Marek Kowalski</div>
+                    <div class="testimonial-position">Właściciel, Black Ink Tattoo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Jak działamy</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Analiza i Strategia</h3>
+                    <p>Analizujemy Twój salon, konkurencję i lokalny rynek. Przygotowujemy strategię dopasowaną do Twoich konkretnych potrzeb i wyznaczamy realistyczne cele.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Produkcja Treści</h3>
+                    <p>Tworzymy angażujące treści reklamowe podkreślające unikalne aspekty Twojego salonu. Projektujemy reklamy, które przyciągają wzrok i prowokują działanie.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Kampanie i Optymalizacja</h3>
+                    <p>Uruchamiamy kampanie i nieustannie je optymalizujemy. Testujemy różne formaty, targetowanie i przekazy, aby znaleźć najbardziej efektywne kombinacje.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Raportowanie i Skalowanie</h3>
+                    <p>Dostarczamy przejrzyste raporty z wynikami. Gdy znajdziemy skuteczne podejście, skalujemy kampanie, aby zapewnić stały napływ nowych klientów do Twojego salonu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nasze pakiety</h2>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Początkujący</h3>
+                    <div class="price">1500 zł <span>/miesiąc</span></div>
+                    <p>Idealny dla nowych salonów</p>
+                    <ul class="feature-list">
+                        <li>Kampanie Facebook & Instagram</li>
+                        <li>Podstawowa produkcja treści</li>
+                        <li>Optymalizacja kampanii</li>
+                        <li>Raport miesięczny</li>
+                        <li>Wsparcie e-mail</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Wybierz pakiet</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="popular">Najpopularniejszy</div>
+                    <h3>Profesjonalny</h3>
+                    <div class="price">2500 zł <span>/miesiąc</span></div>
+                    <p>Dla salonów gotowych na wzrost</p>
+                    <ul class="feature-list">
+                        <li>Zaawansowane kampanie FB & IG</li>
+                        <li>Profesjonalna produkcja treści</li>
+                        <li>Lejek sprzedażowy</li>
+                        <li>Regularna optymalizacja</li>
+                        <li>Raporty tygodniowe</li>
+                        <li>Wsparcie telefoniczne</li>
+                    </ul>
+                    <a href="#contact" class="cta-button pulse">Wybierz pakiet</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">4000 zł <span>/miesiąc</span></div>
+                    <p>Dla salonów z ambicjami</p>
+                    <ul class="feature-list">
+                        <li>Pełne zarządzanie marketingiem</li>
+                        <li>Kampanie wideo premium</li>
+                        <li>Zaawansowana analityka</li>
+                        <li>Obsługa rezerwacji (opcjonalnie)</li>
+                        <li>Dedykowany opiekun</li>
+                        <li>Priorytetowe wsparcie 24/7</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Wybierz pakiet</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skontaktuj się</h2>
+            </div>
+            <div class="contact-form">
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salon">Nazwa salonu</label>
+                        <input type="text" id="salon" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Wiadomość</label>
+                        <textarea id="message" class="form-control" placeholder="Opowiedz nam o swoim salonie i celach"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Umów bezpłatną konsultację</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>O nas</h3>
+                    <p>InkGrowth to specjalistyczna agencja marketingowa pomagająca salonom tatuażu w zdobywaniu nowych klientów poprzez targetowane kampanie w mediach społecznościowych.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +48 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> kontakt@inkgrowth.pl</li>
+                        <li><i class="fas fa-map-marker-alt"></i> ul. Tatarska 5, Warszawa</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Linki</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">O nas</a></li>
+                        <li><a href="#services">Usługi</a></li>
+                        <li><a href="#case-studies">Case Studies</a></li>
+                        <li><a href="#testimonials">Opinie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Social Media</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 InkGrowth. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const salon = document.getElementById('salon').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send this data to your server/email
+            // For demonstration, we'll just show an alert
+            alert('Dziękujemy za kontakt! Odezwiemy się w ciągu 24 godzin.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
