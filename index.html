@@ -967,38 +967,38 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Skontaktuj się</h2>
-            </div>
-            <div class="contact-form">
-                <form id="leadForm">
-                    <div class="form-group">
-                        <label for="name">Imię i nazwisko</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="salon">Nazwa salonu</label>
-                        <input type="text" id="salon" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Wiadomość</label>
-                        <textarea id="message" class="form-control" placeholder="Opowiedz nam o swoim salonie i celach"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Umów bezpłatną konsultację</button>
-                </form>
-            </div>
+   <section id="contact" class="contact">
+    <div class="container">
+        <div class="section-title">
+            <h2>Skontaktuj się</h2>
         </div>
-    </section>
+        <div class="contact-form">
+            <form id="leadForm" action="https://formspree.io/f/mwpllnpo" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Imię i nazwisko</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="salon">Nazwa salonu</label>
+                    <input type="text" id="salon" name="salon" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Wiadomość</label>
+                    <textarea id="message" name="message" class="form-control" placeholder="Opowiedz nam o swoim salonie i celach"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Umów bezpłatną konsultację</button>
+            </form>
+        </div>
+    </div>
+</section>
 
     <footer>
         <div class="container">
